@@ -1,9 +1,6 @@
 #!/bin/bash
+set -e 
 
-# Get application, version, and plugins from input
-APP=$1
-VERSION=$2
-PLUGINS=($3)
 
 # Define the corresponding app name and category in the download URL
 declare -A URL_APP_NAMES=(
@@ -28,11 +25,29 @@ declare -A URL_CATEGORIES=(
     ["AndroidStudio"]="android-studio-ide"
 )
 
+# Checks if packages are installed and installs them if not
+check_packages() {
+    if ! dpkg -s "$@" > /dev/null 2>&1; then
+        if [ "$(find /var/lib/apt/lists/* | wc -l)" = "0" ]; then
+            echo "Running apt-get update..."
+            apt-get update -y
+        fi
+        apt-get -y install --no-install-recommends "$@"
+    fi
+}
+
+export DEBIAN_FRONTEND=noninteractive
+
+check_packages curl ca-certificates gnupg2 dirmngr unzip
+
 URL_APP_NAME=${URL_APP_NAMES[$APP]}
 URL_CATEGORY=${URL_CATEGORIES[$APP]}
 
 if [ -z "$URL_APP_NAME" ]; then
-    echo "Unsupported application. Please select from the provided options."
+    echo "Unsupported application $APP. Please select from the provided options."
+    for key in "${!URL_APP_NAMES[@]}"; do
+        echo "- $key"
+    done
     exit 1
 fi
 
@@ -44,9 +59,11 @@ DOWNLOAD_URL="https://download.jetbrains.com/$URL_CATEGORY/$URL_APP_NAME-$VERSIO
 # Check if the application is installed and install if necessary
 if [ ! -d "$INSTALL_DIR" ]; then
     echo "$APP not found. Installing..."
-    wget -qO- $DOWNLOAD_URL | tar xvz -C $INSTALL_DIR
+    mkdir -p "$INSTALL_DIR"
+    curl -L $DOWNLOAD_URL | tar xvz -C $INSTALL_DIR
 else
     echo "$APP is already installed."
+    exit 1
 fi
 
 # JetBrains IDE plugins directory
@@ -65,9 +82,10 @@ if [ ${#PLUGINS[@]} -ne 0 ]; then
         version=$(echo "$latest_plugin" | grep -oP '(?<=version>).*?(?=</version)')
 
         # Download and install the plugin
-        wget -q -P "$IDEA_PLUGINS_DIR" "$download_url"
+        curl -L -o "$IDEA_PLUGINS_DIR/$id.jar" "$download_url"
     done
     echo "Installation of $APP version $VERSION and plugins completed."
 else
     echo "Installation of $APP version $VERSION completed. No plugins to install."
+    exit 1
 fi
