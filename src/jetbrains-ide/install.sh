@@ -37,7 +37,7 @@ check_packages() {
 
 export DEBIAN_FRONTEND=noninteractive
 
-check_packages curl ca-certificates gnupg2 dirmngr unzip
+check_packages curl ca-certificates gnupg2 dirmngr unzip libxml2-utils
 
 URL_APP_NAME=${URL_APP_NAMES[$APP]}
 URL_CATEGORY=${URL_CATEGORIES[$APP]}
@@ -66,6 +66,7 @@ else
 fi
 
 # JetBrains IDE plugins directory
+echo "Installing Plugins Diretory"
 IDEA_PLUGINS_DIR="$INSTALL_DIR/config/plugins"
 mkdir -p "$IDEA_PLUGINS_DIR"
 
@@ -78,23 +79,27 @@ IFS=',' read -r -a PLUGINS_ARRAY <<< "$PLUGINS"
 if [ ${#PLUGINS_ARRAY[@]} -ne 0 ]; then
     for id in "${PLUGINS_ARRAY[@]}"
     do
-        # Use JetBrains API to get plugin info
+        # API call to get plugin details
         echo "Installing Plugin ID: $id"
-        plugin_info=$(curl -s "https://plugins.jetbrains.com/plugins/list?pluginId=$id")
+        response=$(curl -s "https://plugins.jetbrains.com/plugins/list?pluginId=$id")
 
-        # Extract the download URL and version of the latest version of the plugin
-        latest_plugin=$(echo "$plugin_info" | grep -oPm1 "(?<=<idea-plugin downloads=\")[^<]*")
-        download_url=$(echo "$latest_plugin" | grep -oP '(?<=url=").*?(?=")')
-        version=$(echo "$latest_plugin" | grep -oP '(?<=version>).*?(?=</version)')
+        # Parsing XML response to get the version and download URL of the latest version
+        version=$(echo $response | xmllint --xpath 'string((//idea-plugin)[1]/version)' -)
+        download_url=$(echo $response | xmllint --xpath 'string((//idea-plugin)[1]/@url)' -)
 
+        # Forming the download URL
+        jarUrl="https://plugins.jetbrains.com/plugin/download?rel=true&updateId=$version"
+
+        # Install the Plugin
         echo "Downloading Plugin ID: $id, Version: $version"
 
-        # Download and install the plugin
+        # Downloading .jar file into the plugins directory
         curl -L -o "$IDEA_PLUGINS_DIR/$id.jar" "$download_url"
+
     done
     echo "Installation of $APP version $VERSION and plugins completed."
 else
-    echo "Installation of $APP version $VERSION completed. No plugins to install."
+    echo "No plugins to install."
 fi
 
 cat > /usr/local/bin/jetbrains-ide-path \
