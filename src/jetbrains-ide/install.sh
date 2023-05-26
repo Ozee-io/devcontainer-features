@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e 
 
-
 # Define the corresponding app name and category in the download URL
 declare -A URL_APP_NAMES=(
     ["IntelliJCommunity"]="ideaIC"
@@ -68,12 +67,19 @@ fi
 
 # JetBrains IDE plugins directory
 IDEA_PLUGINS_DIR="$INSTALL_DIR/config/plugins"
+mkdir -p "$IDEA_PLUGINS_DIR"
+
+echo "Installing Plugins"
+
+# Convert the comma-separated string to an array
+IFS=',' read -r -a PLUGINS_ARRAY <<< "$PLUGINS"
 
 # Install plugins only if the PLUGINS array is not empty
-if [ ${#PLUGINS[@]} -ne 0 ]; then
-    for id in "${PLUGINS[@]}"
+if [ ${#PLUGINS_ARRAY[@]} -ne 0 ]; then
+    for id in "${PLUGINS_ARRAY[@]}"
     do
         # Use JetBrains API to get plugin info
+        echo "Installing Plugin ID: $id"
         plugin_info=$(curl -s "https://plugins.jetbrains.com/plugins/list?pluginId=$id")
 
         # Extract the download URL and version of the latest version of the plugin
@@ -81,11 +87,20 @@ if [ ${#PLUGINS[@]} -ne 0 ]; then
         download_url=$(echo "$latest_plugin" | grep -oP '(?<=url=").*?(?=")')
         version=$(echo "$latest_plugin" | grep -oP '(?<=version>).*?(?=</version)')
 
+        echo "Downloading Plugin ID: $id, Version: $version"
+
         # Download and install the plugin
         curl -L -o "$IDEA_PLUGINS_DIR/$id.jar" "$download_url"
     done
     echo "Installation of $APP version $VERSION and plugins completed."
 else
     echo "Installation of $APP version $VERSION completed. No plugins to install."
-    exit 1
 fi
+
+cat > /usr/local/bin/jetbrains-ide-path \
+<< EOF
+#!/bin/sh
+echo "${INSTALL_DIR}"
+EOF
+
+chmod +x /usr/local/bin/jetbrains-ide-path

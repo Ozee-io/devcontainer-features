@@ -12,8 +12,8 @@
                 "app": "IntelliJCommunity",
                 "version": "2021.2.3",
                 "plugins": [
-                    "com.intellij.plugins.yaml",
-                    "org.jetbrains.kotlin"
+                    "org.intellij.plugins.hcl",
+                    "com.haulmont.rcb"
                 ]
             }
         },
