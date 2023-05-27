@@ -26,7 +26,7 @@ declare -A URL_CATEGORIES=(
 
 # Checks if packages are installed and installs them if not
 check_packages() {
-    if ! dpkg -s "$@" > /dev/null 2>&1; then
+    if ! dpkg -s "$@" >/dev/null 2>&1; then
         if [ "$(find /var/lib/apt/lists/* | wc -l)" = "0" ]; then
             echo "Running apt-get update..."
             apt-get update -y
@@ -35,77 +35,82 @@ check_packages() {
     fi
 }
 
+install_ide() {
+    local app=$1
+    local version=$2
+    local plugins=$3
+
+    local url_app_name=${URL_APP_NAMES[$app]}
+    local url_category=${URL_CATEGORIES[$app]}
+    
+    if [ -z "$url_app_name" ]; then
+        echo "Unsupported application $app. Please select from the provided options."
+        for key in "${!URL_APP_NAMES[@]}"; do
+            echo "- $key"
+        done
+        exit 1
+    fi
+    
+    local install_dir="/opt/$app"
+    local download_url="https://download.jetbrains.com/$url_category/$url_app_name-$version.tar.gz"
+    
+    if [ ! -d "$install_dir" ]; then
+        echo "$app not found. Installing..."
+        mkdir -p "$install_dir"
+        curl -L $download_url | tar xvz -C $install_dir
+    else
+        echo "$app is already installed."
+        return
+    fi
+    
+    install_plugins "$install_dir" "$plugins"
+    
+    cat > /usr/local/bin/jetbrains-ide-path \
+    << EOF
+#!/bin/sh
+echo "${install_dir}"
+EOF
+
+    chmod +x /usr/local/bin/jetbrains-ide-path
+}
+
+install_plugins() {
+    local install_dir=$1
+    local plugins=$2
+
+    local idea_plugins_dir="$install_dir/config/plugins"
+    mkdir -p "$idea_plugins_dir"
+    
+    local IFS=',' 
+    read -r -a plugins_array <<< "$plugins"
+    
+    if [ ${#plugins_array[@]} -ne 0 ]; then
+        for id in "${plugins_array[@]}"; do
+            install_plugin "$idea_plugins_dir" "$id"
+        done
+    else
+        echo "No plugins to install."
+    fi
+}
+
+install_plugin() {
+    local idea_plugins_dir=$1
+    local id=$2
+
+    echo "Installing Plugin ID: $id"
+    local response=$(curl -s "https://plugins.jetbrains.com/plugins/list?pluginId=$id")
+    
+    local version=$(echo $response | xmllint --xpath 'string((//idea-plugin)[1]/version)' -)
+    local download_url=$(echo $response | xmllint --xpath 'string((//idea-plugin)[1]/@url)' -)
+    
+    local jar_url="https://plugins.jetbrains.com/plugin/download?rel=true&updateId=$version"
+
+    echo "Downloading Plugin ID: $id, Version: $version"
+    curl -L -o "$idea_plugins_dir/$id.jar" "$jar_url"
+}
+
 export DEBIAN_FRONTEND=noninteractive
 
 check_packages curl ca-certificates gnupg2 dirmngr unzip libxml2-utils
 
-URL_APP_NAME=${URL_APP_NAMES[$APP]}
-URL_CATEGORY=${URL_CATEGORIES[$APP]}
-
-if [ -z "$URL_APP_NAME" ]; then
-    echo "Unsupported application $APP. Please select from the provided options."
-    for key in "${!URL_APP_NAMES[@]}"; do
-        echo "- $key"
-    done
-    exit 1
-fi
-
-# Define installation directory and download URL
-INSTALL_DIR="/opt/$APP"
-DOWNLOAD_URL="https://download.jetbrains.com/$URL_CATEGORY/$URL_APP_NAME-$VERSION.tar.gz"
-
-
-# Check if the application is installed and install if necessary
-if [ ! -d "$INSTALL_DIR" ]; then
-    echo "$APP not found. Installing..."
-    mkdir -p "$INSTALL_DIR"
-    curl -L $DOWNLOAD_URL | tar xvz -C $INSTALL_DIR
-else
-    echo "$APP is already installed."
-    exit 1
-fi
-
-# JetBrains IDE plugins directory
-echo "Installing Plugins Diretory"
-IDEA_PLUGINS_DIR="$INSTALL_DIR/config/plugins"
-mkdir -p "$IDEA_PLUGINS_DIR"
-
-echo "Installing Plugins"
-
-# Convert the comma-separated string to an array
-IFS=',' read -r -a PLUGINS_ARRAY <<< "$PLUGINS"
-
-# Install plugins only if the PLUGINS array is not empty
-if [ ${#PLUGINS_ARRAY[@]} -ne 0 ]; then
-    for id in "${PLUGINS_ARRAY[@]}"
-    do
-        # API call to get plugin details
-        echo "Installing Plugin ID: $id"
-        response=$(curl -s "https://plugins.jetbrains.com/plugins/list?pluginId=$id")
-
-        # Parsing XML response to get the version and download URL of the latest version
-        version=$(echo $response | xmllint --xpath 'string((//idea-plugin)[1]/version)' -)
-        download_url=$(echo $response | xmllint --xpath 'string((//idea-plugin)[1]/@url)' -)
-
-        # Forming the download URL
-        jarUrl="https://plugins.jetbrains.com/plugin/download?rel=true&updateId=$version"
-
-        # Install the Plugin
-        echo "Downloading Plugin ID: $id, Version: $version"
-
-        # Downloading .jar file into the plugins directory
-        curl -L -o "$IDEA_PLUGINS_DIR/$id.jar" "$download_url"
-
-    done
-    echo "Installation of $APP version $VERSION and plugins completed."
-else
-    echo "No plugins to install."
-fi
-
-cat > /usr/local/bin/jetbrains-ide-path \
-<< EOF
-#!/bin/sh
-echo "${INSTALL_DIR}"
-EOF
-
-chmod +x /usr/local/bin/jetbrains-ide-path
+install_ide $APP $VERSION $PLUGINS
