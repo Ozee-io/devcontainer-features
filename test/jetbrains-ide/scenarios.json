@@ -141,7 +141,7 @@
         "remoteUser": "octocat"
     },
     "android_studio_2023.1.2": {
-        "image": "mcr.microsoft.com/vscode/devcontainers/android:11",
+        "image": "mcr.microsoft.com/vscode/devcontainers/java:11",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
                 "installZsh": false,
