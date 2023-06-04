@@ -1,5 +1,5 @@
 {
-    "intellij_community_2021.2.3": {
+    "intellij_community_2023.1.2": {
         "image": "mcr.microsoft.com/devcontainers/java:11",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {

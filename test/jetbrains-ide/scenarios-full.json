@@ -1,5 +1,5 @@
 {
-    "intellij_community_2021.2.3": {
+    "intellij_community_2023.1.2": {
         "image": "mcr.microsoft.com/devcontainers/java:11",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
@@ -10,7 +10,7 @@
             },
             "jetbrains-ide": {
                 "app": "IntelliJCommunity",
-                "version": "2021.2.3",
+                "version": "2023.1.2",
                 "plugins": [
                     "com.intellij.plugins.yaml",
                     "org.jetbrains.kotlin"
@@ -19,7 +19,7 @@
         },
         "remoteUser": "octocat"
     },
-    "intellij_professional_2021.2.3": {
+    "intellij_professional_2023.1.2": {
         "image": "mcr.microsoft.com/devcontainers/java:11",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
@@ -30,7 +30,7 @@
             },
             "jetbrains-ide": {
                 "app": "IntelliJProfessional",
-                "version": "2021.2.3",
+                "version": "2023.1.2",
                 "plugins": [
                     "com.intellij.plugins.yaml",
                     "org.jetbrains.kotlin"
@@ -40,7 +40,7 @@
         "remoteUser": "octocat"
     },
 
-    "pycharm_community_2021.2.3": {
+    "pycharm_community_2023.1.2": {
         "image": "mcr.microsoft.com/devcontainers/python:3.9",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
@@ -51,7 +51,7 @@
             },
             "jetbrains-ide": {
                 "app": "PyCharmCommunity",
-                "version": "2021.2.3",
+                "version": "2023.1.2",
                 "plugins": [
                     "Pythonid",
                     "org.jetbrains.plugins.yaml"
@@ -60,7 +60,7 @@
         },
         "remoteUser": "octocat"
     },
-    "pycharm_professional_2021.2.3": {
+    "pycharm_professional_2023.1.2": {
         "image": "mcr.microsoft.com/devcontainers/python:3.9",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
@@ -71,7 +71,7 @@
             },
             "jetbrains-ide": {
                 "app": "PyCharmProfessional",
-                "version": "2021.2.3",
+                "version": "2023.1.2",
                 "plugins": [
                     "Pythonid",
                     "org.jetbrains.plugins.yaml"
@@ -80,7 +80,7 @@
         },
         "remoteUser": "octocat"
     },
-    "webstorm_2021.2.3": {
+    "webstorm_2023.1.2": {
         "image": "mcr.microsoft.com/devcontainers/node:16",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
@@ -91,7 +91,7 @@
             },
             "jetbrains-ide": {
                 "app": "WebStorm",
-                "version": "2021.2.3",
+                "version": "2023.1.2",
                 "plugins": [
                     "com.intellij.plugins.yaml",
                     "org.jetbrains.plugins.vuejs"
@@ -100,7 +100,7 @@
         },
         "remoteUser": "octocat"
     },
-    "goland_2021.2.3": {
+    "goland_2023.1.2": {
         "image": "mcr.microsoft.com/devcontainers/go:1.17",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
@@ -111,7 +111,7 @@
             },
             "jetbrains-ide": {
                 "app": "GoLand",
-                "version": "2021.2.3",
+                "version": "2023.1.2",
                 "plugins": [
                     "com.intellij.plugins.yaml",
                     "org.jetbrains.plugins.go"
@@ -120,7 +120,7 @@
         },
         "remoteUser": "octocat"
     },
-    "datagrip_2021.2.3": {
+    "datagrip_2023.1.2": {
         "image": "mcr.microsoft.com/devcontainers/python:3.9",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
@@ -131,7 +131,7 @@
             },
             "jetbrains-ide": {
                 "app": "DataGrip",
-                "version": "2021.2.3",
+                "version": "2023.1.2",
                 "plugins": [
                     "com.intellij.plugins.yaml",
                     "org.jetbrains.plugins.database"
@@ -140,7 +140,7 @@
         },
         "remoteUser": "octocat"
     },
-    "android_studio_2021.2.3": {
+    "android_studio_2023.1.2": {
         "image": "mcr.microsoft.com/vscode/devcontainers/android:11",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
@@ -151,7 +151,7 @@
             },
             "jetbrains-ide": {
                 "app": "AndroidStudio",
-                "version": "2021.2.3",
+                "version": "2023.1.2",
                 "plugins": [
                     "com.intellij.plugins.yaml",
                     "org.jetbrains.plugins.gradle"
