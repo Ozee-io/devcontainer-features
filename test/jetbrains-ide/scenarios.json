@@ -119,7 +119,7 @@
         "remoteUser": "octocat"
     },
     "webstorm_2023.1.2": {
-        "image": "mcr.microsoft.com/devcontainers/node",
+        "image": "mcr.microsoft.com/devcontainers/typescript-node",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
                 "installZsh": false,
