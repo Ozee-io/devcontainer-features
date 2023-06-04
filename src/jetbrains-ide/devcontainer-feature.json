@@ -10,13 +10,11 @@
                 "AndroidStudio",
                 "DataGrip",
                 "GoLand",
-                "IntelliJCommunity",
                 "IntelliJProfessional",
-                "PyCharmCommunity",
                 "PyCharmProfessional",
                 "WebStorm"
             ],
-            "default": "IntelliJCommunity",
+            "default": "IntelliJProfessional",
             "description": "Choose the JetBrains IDE you want to install."
         },
         "version": {
