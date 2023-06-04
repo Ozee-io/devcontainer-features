@@ -98,7 +98,7 @@
         },
         "remoteUser": "octocat"
     },
-    "rubymine_2013.1.2": {
+    "rubymine_2023.1.2": {
         "image": "mcr.microsoft.com/devcontainers/ruby",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
