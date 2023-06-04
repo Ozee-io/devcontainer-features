@@ -57,7 +57,8 @@ install_ide() {
     if [ ! -d "$install_dir" ]; then
         echo "$app not found. Installing..."
         mkdir -p "$install_dir"
-        curl -L $download_url | tar xvz -C $install_dir
+        echo "Downloading from $download_url" 
+        curl -L $download_url | tar --strip-components=1 -xvz -C $install_dir
     else
         echo "$app is already installed."
         return
