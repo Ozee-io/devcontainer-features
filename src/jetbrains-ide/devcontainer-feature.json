@@ -7,21 +7,21 @@
         "app": {
             "type": "string",
             "enum": [
+                "AndroidStudio",
+                "DataGrip",
+                "GoLand",
                 "IntelliJCommunity",
                 "IntelliJProfessional",
                 "PyCharmCommunity",
                 "PyCharmProfessional",
-                "WebStorm",
-                "GoLand",
-                "DataGrip",
-                "AndroidStudio"
+                "WebStorm"
             ],
             "default": "IntelliJCommunity",
             "description": "Choose the JetBrains IDE you want to install."
         },
         "version": {
             "type": "string",
-            "default": "2023.1",
+            "default": "2023.1.2",
             "description": "Choose the version of the JetBrains IDE you want to install."
         },
         "plugins": {

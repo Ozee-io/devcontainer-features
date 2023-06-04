@@ -5,7 +5,7 @@ set -e
 # Optional: Import test library
 source dev-container-features-test-lib
 
-check "See what is in app path" ls -la /opt/IntelliJCommunity
+check "See what is in app path" ls -la /Opt/PyCharmCommunity
 
 # Report result
 reportResults

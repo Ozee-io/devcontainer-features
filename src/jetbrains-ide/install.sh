@@ -7,9 +7,9 @@ declare -A URL_APP_NAMES=(
     ["IntelliJProfessional"]="ideaIU"
     ["PyCharmCommunity"]="pycharm-community"
     ["PyCharmProfessional"]="pycharm-professional"
-    ["WebStorm"]="WebStorm"
-    ["GoLand"]="GoLand"
-    ["DataGrip"]="DataGrip"
+    ["WebStorm"]="webstorm"
+    ["GoLand"]="goland"
+    ["DataGrip"]="datagrip"
     ["AndroidStudio"]="android-studio-ide"
 )
 
@@ -18,9 +18,9 @@ declare -A URL_CATEGORIES=(
     ["IntelliJProfessional"]="idea"
     ["PyCharmCommunity"]="pycharm"
     ["PyCharmProfessional"]="pycharm"
-    ["WebStorm"]="WebStorm"
-    ["GoLand"]="GoLand"
-    ["DataGrip"]="DataGrip"
+    ["WebStorm"]="webstorm"
+    ["GoLand"]="goland"
+    ["DataGrip"]="datagrip"
     ["AndroidStudio"]="android-studio-ide"
 )
 
@@ -91,6 +91,8 @@ install_plugins() {
     else
         echo "No plugins to install."
     fi
+
+    register_for_remote_development "$install_dir"
 }
 
 install_plugin() {
@@ -107,6 +109,13 @@ install_plugin() {
 
     echo "Downloading Plugin ID: $id, Version: $version"
     curl -L -o "$idea_plugins_dir/$id.jar" "$jar_url"
+}
+
+register_for_remote_development() {
+    local install_dir=$1
+
+    echo "Registering IDE for remote devleopment: $id"
+    sh $install_dir/bin/remote-dev-server.sh registerBackendLocationForGateway 
 }
 
 export DEBIAN_FRONTEND=noninteractive

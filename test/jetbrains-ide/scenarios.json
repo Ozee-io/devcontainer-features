@@ -10,9 +10,150 @@
             },
             "jetbrains-ide": {
                 "app": "IntelliJCommunity",
-                "version": "2021.2.3",
+                "version": "2023.1.2",
                 "plugins": [
-                    "org.intellij.plugins.hcl",
+                    "com.intellij.plugins.yaml",
+                    "com.haulmont.rcb"
+                ]
+            }
+        },
+        "remoteUser": "octocat"
+    },
+    "intellij_professional_2023.1.2": {
+        "image": "mcr.microsoft.com/devcontainers/java:11",
+        "features": {
+            "ghcr.io/devcontainers/features/common-utils:1": {
+                "installZsh": false,
+                "installOhMyZsh": false,
+                "upgradePackages": false,
+                "username": "octocat"
+            },
+            "jetbrains-ide": {
+                "app": "IntelliJProfessional",
+                "version": "2023.1.2",
+                "plugins": [
+                    "com.intellij.plugins.yaml",
+                    "com.haulmont.rcb"
+                ]
+            }
+        },
+        "remoteUser": "octocat"
+    },
+
+    "pycharm_community_2023.1.2": {
+        "image": "mcr.microsoft.com/devcontainers/python:3.9",
+        "features": {
+            "ghcr.io/devcontainers/features/common-utils:1": {
+                "installZsh": false,
+                "installOhMyZsh": false,
+                "upgradePackages": false,
+                "username": "octocat"
+            },
+            "jetbrains-ide": {
+                "app": "PyCharmCommunity",
+                "version": "2023.1.2",
+                "plugins": [
+                    "com.intellij.plugins.yaml",
+                    "com.haulmont.rcb"
+                ]
+            }
+        },
+        "remoteUser": "octocat"
+    },
+    "pycharm_professional_2023.1.2": {
+        "image": "mcr.microsoft.com/devcontainers/python:3.9",
+        "features": {
+            "ghcr.io/devcontainers/features/common-utils:1": {
+                "installZsh": false,
+                "installOhMyZsh": false,
+                "upgradePackages": false,
+                "username": "octocat"
+            },
+            "jetbrains-ide": {
+                "app": "PyCharmProfessional",
+                "version": "2023.1.2",
+                "plugins": [
+                    "com.intellij.plugins.yaml",
+                    "com.haulmont.rcb"
+                ]
+            }
+        },
+        "remoteUser": "octocat"
+    },
+    "webstorm_2023.1.2": {
+        "image": "mcr.microsoft.com/devcontainers/node:16",
+        "features": {
+            "ghcr.io/devcontainers/features/common-utils:1": {
+                "installZsh": false,
+                "installOhMyZsh": false,
+                "upgradePackages": false,
+                "username": "octocat"
+            },
+            "jetbrains-ide": {
+                "app": "WebStorm",
+                "version": "2023.1.2",
+                "plugins": [
+                    "com.intellij.plugins.yaml",
+                    "com.haulmont.rcb"
+                ]
+            }
+        },
+        "remoteUser": "octocat"
+    },
+    "goland_2023.1.2": {
+        "image": "mcr.microsoft.com/devcontainers/go:1.17",
+        "features": {
+            "ghcr.io/devcontainers/features/common-utils:1": {
+                "installZsh": false,
+                "installOhMyZsh": false,
+                "upgradePackages": false,
+                "username": "octocat"
+            },
+            "jetbrains-ide": {
+                "app": "GoLand",
+                "version": "2023.1.2",
+                "plugins": [
+                    "com.intellij.plugins.yaml",
+                    "com.haulmont.rcb"
+                ]
+            }
+        },
+        "remoteUser": "octocat"
+    },
+    "datagrip_2023.1.2": {
+        "image": "mcr.microsoft.com/devcontainers/python:3.9",
+        "features": {
+            "ghcr.io/devcontainers/features/common-utils:1": {
+                "installZsh": false,
+                "installOhMyZsh": false,
+                "upgradePackages": false,
+                "username": "octocat"
+            },
+            "jetbrains-ide": {
+                "app": "DataGrip",
+                "version": "2023.1.2",
+                "plugins": [
+                    "com.intellij.plugins.yaml",
+                    "com.haulmont.rcb"
+                ]
+            }
+        },
+        "remoteUser": "octocat"
+    },
+    "android_studio_2023.1.2": {
+        "image": "mcr.microsoft.com/vscode/devcontainers/android:11",
+        "features": {
+            "ghcr.io/devcontainers/features/common-utils:1": {
+                "installZsh": false,
+                "installOhMyZsh": false,
+                "upgradePackages": false,
+                "username": "octocat"
+            },
+            "jetbrains-ide": {
+                "app": "AndroidStudio",
+                "version": "2023.1.2",
+                "plugins": [
+                    "com.intellij.plugins.yaml",
                     "com.haulmont.rcb"
                 ]
             }
