@@ -1,0 +1,35 @@
+{
+    "name": "JetBrains IDE Installer",
+    "id": "jetbrains-ide",
+    "version": "1.0.0",
+    "description": "A feature to install a JetBrains IDE and plugins",
+    "options": {
+        "app": {
+            "type": "string",
+            "enum": [
+                "GoLand",
+                "IntelliJProfessional",
+                "PhpStorm",
+                "PyCharmProfessional",
+                "Rider",
+                "RubyMine",
+                "WebStorm"
+            ],
+            "default": "IntelliJProfessional",
+            "description": "Choose the JetBrains IDE you want to install."
+        },
+        "version": {
+            "type": "string",
+            "default": "2023.1.2",
+            "description": "Choose the version of the JetBrains IDE you want to install."
+        },
+        "plugins": {
+            "type": "string",
+            "default": "",
+            "description": "List of JetBrains plugin IDs to install, separated by commas."
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}

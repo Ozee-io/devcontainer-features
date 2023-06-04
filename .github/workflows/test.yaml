@@ -13,8 +13,7 @@ jobs:
     strategy:
       matrix:
         features:
-          - color
-          - hello
+          - jetbrains-ide
         baseImage:
           - debian:latest
           - ubuntu:latest
@@ -34,8 +33,8 @@ jobs:
     strategy:
       matrix:
         features:
-          - color
-          - hello
+          - jetbrains-ide
+
     steps:
       - uses: actions/checkout@v3
 

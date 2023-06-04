@@ -1,0 +1,141 @@
+{
+    "goland_2023.1.2": {
+        "image": "mcr.microsoft.com/devcontainers/go",
+        "features": {
+            "ghcr.io/devcontainers/features/common-utils:1": {
+                "installZsh": false,
+                "installOhMyZsh": false,
+                "upgradePackages": false,
+                "username": "octocat"
+            },
+            "jetbrains-ide": {
+                "app": "GoLand",
+                "version": "2023.1.2",
+                "plugins": [
+                    "com.intellij.plugins.yaml",
+                    "com.haulmont.rcb"
+                ]
+            }
+        },
+        "remoteUser": "octocat"
+    },
+    "intellij_professional_2023.1.2": {
+        "image": "mcr.microsoft.com/devcontainers/java",
+        "features": {
+            "ghcr.io/devcontainers/features/common-utils:1": {
+                "installZsh": false,
+                "installOhMyZsh": false,
+                "upgradePackages": false,
+                "username": "octocat"
+            },
+            "jetbrains-ide": {
+                "app": "IntelliJProfessional",
+                "version": "2023.1.2",
+                "plugins": [
+                    "com.intellij.plugins.yaml",
+                    "com.haulmont.rcb"
+                ]
+            }
+        },
+        "remoteUser": "octocat"
+    },
+    "phpstorm_2023.1.2": {
+        "image": "mcr.microsoft.com/devcontainers/ruby",
+        "features": {
+            "ghcr.io/devcontainers/features/common-utils:1": {
+                "installZsh": false,
+                "installOhMyZsh": false,
+                "upgradePackages": false,
+                "username": "octocat"
+            },
+            "jetbrains-ide": {
+                "app": "PhpStorm",
+                "version": "2023.1.2",
+                "plugins": [
+                    "com.intellij.plugins.yaml",
+                    "com.haulmont.rcb"
+                ]
+            }
+        }
+    },
+    "pycharm_professional_2023.1.2": {
+        "image": "mcr.microsoft.com/devcontainers/python",
+        "features": {
+            "ghcr.io/devcontainers/features/common-utils:1": {
+                "installZsh": false,
+                "installOhMyZsh": false,
+                "upgradePackages": false,
+                "username": "octocat"
+            },
+            "jetbrains-ide": {
+                "app": "PyCharmProfessional",
+                "version": "2023.1.2",
+                "plugins": [
+                    "com.intellij.plugins.yaml",
+                    "com.haulmont.rcb"
+                ]
+            }
+        },
+        "remoteUser": "octocat"
+    },
+    "rider_2023.1.2": {
+        "image": "mcr.microsoft.com/devcontainers/dotnet",
+        "features": {
+            "ghcr.io/devcontainers/features/common-utils:1": {
+                "installZsh": false,
+                "installOhMyZsh": false,
+                "upgradePackages": false,
+                "username": "octocat"
+            },
+            "jetbrains-ide": {
+                "app": "Rider",
+                "version": "2023.1.2",
+                "plugins": [
+                    "com.intellij.plugins.yaml",
+                    "com.haulmont.rcb"
+                ]
+            }
+        },
+        "remoteUser": "octocat"
+    },
+    "rubymine_2023.1.2": {
+        "image": "mcr.microsoft.com/devcontainers/ruby",
+        "features": {
+            "ghcr.io/devcontainers/features/common-utils:1": {
+                "installZsh": false,
+                "installOhMyZsh": false,
+                "upgradePackages": false,
+                "username": "octocat"
+            },
+            "jetbrains-ide": {
+                "app": "RubyMine",
+                "version": "2023.1.2",
+                "plugins": [
+                    "com.intellij.plugins.yaml",
+                    "com.haulmont.rcb"
+                ]
+            }
+        },
+        "remoteUser": "octocat"
+    },
+    "webstorm_2023.1.2": {
+        "image": "mcr.microsoft.com/devcontainers/typescript-node",
+        "features": {
+            "ghcr.io/devcontainers/features/common-utils:1": {
+                "installZsh": false,
+                "installOhMyZsh": false,
+                "upgradePackages": false,
+                "username": "octocat"
+            },
+            "jetbrains-ide": {
+                "app": "WebStorm",
+                "version": "2023.1.2",
+                "plugins": [
+                    "com.intellij.plugins.yaml",
+                    "com.haulmont.rcb"
+                ]
+            }
+        },
+        "remoteUser": "octocat"
+    }
+}
