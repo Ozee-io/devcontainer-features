@@ -7,7 +7,7 @@ declare -A URL_APP_NAMES=(
     ["IntelliJProfessional"]="ideaIU"
     ["PhpStorm"]="PhpStorm"
     ["PyCharmProfessional"]="pycharm-professional"
-    ["Rider"]="rider"
+    ["Rider"]="JetBrains.Rider"
     ["RubyMine"]="RubyMine"
     ["WebStorm"]="WebStorm"
 )
