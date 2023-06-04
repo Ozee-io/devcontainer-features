@@ -3,25 +3,23 @@ set -e
 
 # Define the corresponding app name and category in the download URL
 declare -A URL_APP_NAMES=(
-    ["IntelliJCommunity"]="ideaIC"
-    ["IntelliJProfessional"]="ideaIU"
-    ["PyCharmCommunity"]="pycharm-community"
-    ["PyCharmProfessional"]="pycharm-professional"
-    ["WebStorm"]="webstorm"
     ["GoLand"]="goland"
-    ["DataGrip"]="datagrip"
-    ["AndroidStudio"]="android-studio-ide"
+    ["IntelliJProfessional"]="ideaIU"
+    ["PhpStorm"]="PhpStorm"
+    ["PyCharmProfessional"]="pycharm-professional"
+    ["Rider"]="rider"
+    ["RubyMine"]="RubyMine"
+    ["WebStorm"]="WebStorm"
 )
 
 declare -A URL_CATEGORIES=(
-    ["IntelliJCommunity"]="idea"
+    ["GoLand"]="go"
     ["IntelliJProfessional"]="idea"
-    ["PyCharmCommunity"]="pycharm"
-    ["PyCharmProfessional"]="pycharm"
+    ["PhpStorm"]="webide"
+    ["PyCharmProfessional"]="python"
+    ["Rider"]="rider"
+    ["RubyMine"]="ruby"
     ["WebStorm"]="webstorm"
-    ["GoLand"]="goland"
-    ["DataGrip"]="datagrip"
-    ["AndroidStudio"]="android-studio-ide"
 )
 
 # Checks if packages are installed and installs them if not

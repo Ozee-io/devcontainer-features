@@ -7,11 +7,12 @@
         "app": {
             "type": "string",
             "enum": [
-                "AndroidStudio",
-                "DataGrip",
                 "GoLand",
                 "IntelliJProfessional",
+                "PhpStorm",
                 "PyCharmProfessional",
+                "Rider",
+                "RubyMine",
                 "WebStorm"
             ],
             "default": "IntelliJProfessional",
@@ -23,12 +24,9 @@
             "description": "Choose the version of the JetBrains IDE you want to install."
         },
         "plugins": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "default": [],
-            "description": "List of JetBrains plugin IDs to install."
+            "type": "string",
+            "default": "",
+            "description": "List of JetBrains plugin IDs to install, separated by commas."
         }
     },
     "installsAfter": [
