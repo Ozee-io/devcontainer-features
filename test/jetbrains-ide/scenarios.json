@@ -1,6 +1,6 @@
 {
     "goland_2023.1.2": {
-        "image": "mcr.microsoft.com/devcontainers/go:1.17",
+        "image": "mcr.microsoft.com/devcontainers/go",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
                 "installZsh": false,
@@ -20,7 +20,7 @@
         "remoteUser": "octocat"
     },
     "intellij_professional_2023.1.2": {
-        "image": "mcr.microsoft.com/devcontainers/java:11",
+        "image": "mcr.microsoft.com/devcontainers/java",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
                 "installZsh": false,
@@ -40,7 +40,7 @@
         "remoteUser": "octocat"
     },
     "phpstorm_2023.1.2": {
-        "image": "mcr.microsoft.com/devcontainers/ruby:latest",
+        "image": "mcr.microsoft.com/devcontainers/ruby",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
                 "installZsh": false,
@@ -59,7 +59,7 @@
         }
     },
     "pycharm_professional_2023.1.2": {
-        "image": "mcr.microsoft.com/devcontainers/python:3.11",
+        "image": "mcr.microsoft.com/devcontainers/python",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
                 "installZsh": false,
@@ -79,7 +79,7 @@
         "remoteUser": "octocat"
     },
     "rider_2023.1.2": {
-        "image": "mcr.microsoft.com/devcontainers/dotnet:latest",
+        "image": "mcr.microsoft.com/devcontainers/dotnet",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
                 "installZsh": false,
@@ -99,7 +99,7 @@
         "remoteUser": "octocat"
     },
     "rubymine_2013.1.2": {
-        "image": "mcr.microsoft.com/devcontainers/base:latest",
+        "image": "mcr.microsoft.com/devcontainers/ruby",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
                 "installZsh": false,
@@ -119,7 +119,7 @@
         "remoteUser": "octocat"
     },
     "webstorm_2023.1.2": {
-        "image": "mcr.microsoft.com/devcontainers/node:16",
+        "image": "mcr.microsoft.com/devcontainers/node",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:1": {
                 "installZsh": false,
